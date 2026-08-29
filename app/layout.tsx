@@ -1,9 +1,9 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Fredoka } from 'next/font/google'
+import { Nunito_Sans } from 'next/font/google'
 import './globals.css'
 
-const fredoka = Fredoka({ subsets: ['latin'], variable: '--font-fredoka' })
+const nunito = Nunito_Sans({ subsets: ['latin'], variable: '--font-nunito', display: 'swap' })
 
 export const metadata: Metadata = {
   title: 'DBox | Gestão Escolar',
@@ -12,15 +12,13 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light',
-  themeColor: '#1769c2',
-  userScalable: false,
+  width: 'device-width', initialScale: 1, maximumScale: 1, colorScheme: 'light', themeColor: '#1769c2', userScalable: false,
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR" className="bg-background">
-      <body className={`${fredoka.variable} antialiased`}>
+      <body className={`${nunito.variable} antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

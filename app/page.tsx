@@ -10,14 +10,14 @@ import {
 } from 'lucide-react'
 
 const quickLinks = [
-  { label: 'Portal do aluno', icon: GraduationCap, tone: 'coral' },
+  { label: 'Portal', icon: GraduationCap, tone: 'coral' },
   { label: 'Webmail', icon: Mail, tone: 'blue' },
   { label: 'Biblioteca', icon: Library, tone: 'gold' },
   { label: 'Cardápio', icon: Utensils, tone: 'green' },
   { label: 'Google Drive', icon: PanelTop, tone: 'lavender' },
-  { label: 'Agenda escolar', icon: CalendarDays, tone: 'peach' },
-  { label: 'Chamados TI', icon: Settings, tone: 'sky' },
-  { label: 'Área do professor', icon: BookOpen, tone: 'mint' },
+  { label: 'Agenda', icon: CalendarDays, tone: 'peach' },
+  { label: 'Suporte', icon: Settings, tone: 'sky' },
+  { label: 'Professor', icon: BookOpen, tone: 'mint' },
 ]
 
 const scales = [
@@ -81,12 +81,12 @@ export default function Page() {
       </header>
 
       <div className="page-content">
-        <section className="welcome-card"><div><p className="eyebrow">PAINEL DA ESCOLA</p><h1>{greeting}, Marina!</h1><p className="date-line">Segunda, 24 de agosto de 2026 <span>•</span> Que bom ter você por aqui.</p></div><div className="welcome-art"><Coffee /></div></section>
+        <section className="welcome-card"><div><p className="eyebrow">PAINEL DA ESCOLA</p><h1>{greeting}, Marina!</h1><p className="date-line">24 de agosto de 2026</p></div><div className="welcome-art"><Coffee /></div></section>
 
         <section className="section-block"><div className="section-heading"><div><p className="eyebrow">ACESSO RÁPIDO</p><h2>Links rápidos</h2></div><button className="text-button">Personalizar <Settings /></button></div><div className="quick-grid">{quickLinks.map(({ label, icon: Icon, tone }) => <button className="quick-link" key={label} onClick={() => alert(`Abrindo ${label}`)}><ToneIcon tone={tone}><Icon /></ToneIcon><span>{label}</span><ExternalLink /></button>)}</div></section>
 
         <div className="dashboard-grid">
-          <section className="section-block scales-section"><div className="section-heading"><div><p className="eyebrow">HOJE, 24 DE AGOSTO</p><h2>Escalas</h2></div><button className="more-button" aria-label="Mais opções"><MoreHorizontal /></button></div><div className="scales-grid">{scales.map(({ title, person, detail, icon: Icon, tone }) => <article className={`scale-card scale-${tone}`} key={title}><div className="scale-top"><ToneIcon tone={tone}><Icon /></ToneIcon><span>Responsável hoje</span></div><h3>{title}</h3><div className="person-row"><span className="mini-avatar">{person.split(' ').map(n => n[0]).join('').slice(0, 2)}</span><div><strong>{person}</strong><small>{detail}</small></div></div></article>)}</div></section>
+          <section className="section-block scales-section"><div className="section-heading"><div><p className="eyebrow">HOJE</p><h2>Escalas</h2></div><button className="more-button" aria-label="Mais opções"><MoreHorizontal /></button></div><div className="scales-grid">{scales.map(({ title, person, detail, icon: Icon, tone }) => <article className={`scale-card scale-${tone}`} key={title}><div className="scale-top"><ToneIcon tone={tone}><Icon /></ToneIcon><span>Hoje</span></div><h3>{title}</h3><div className="person-row"><span className="mini-avatar">{person.split(' ').map(n => n[0]).join('').slice(0, 2)}</span><div><strong>{person}</strong><small>{detail}</small></div></div></article>)}</div></section>
 
           <aside className="side-column">
             <section className="side-card events-card"><div className="side-heading"><div><p className="eyebrow">AGENDA</p><h2>Próximos eventos</h2></div><span className="counter">{eventIndex + 1} / {events.length}</span></div><article className="event-feature"><div className={`event-date event-${event.tone}`}><strong>{event.date}</strong><span>{event.month}</span></div><div><h3>{event.title}</h3><p><Clock3 /> {event.time} <span>•</span> {event.place}</p></div></article><div className="event-controls"><button onClick={() => setEventIndex((eventIndex - 1 + events.length) % events.length)} aria-label="Evento anterior"><ArrowLeft /></button><button onClick={() => setEventIndex((eventIndex + 1) % events.length)} aria-label="Próximo evento"><ArrowRight /></button><button className="reset-button" onClick={() => setEventIndex(0)}>Mais próximo <ArrowRight /></button></div></section>
